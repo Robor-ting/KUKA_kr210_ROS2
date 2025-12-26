@@ -1,0 +1,79 @@
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:macro name="kr210_arm_ros2_control" params="name initial_positions_file rsi_config_file">
+        <xacro:property name="initial_positions" value="${load_yaml(initial_positions_file)['initial_positions']}"/>
+        <xacro:property name="rsi_config" value="${load_yaml(rsi_config_file)['rsi']}"/>
+
+        <ros2_control name="${name}" type="system">
+            <hardware>
+                <!-- KUKA KR210 RSI Hardware Interface for real robot -->
+                <plugin>kuka_drivers/RsiHardwareInterface</plugin>
+                <!-- RSI connection parameters from config file -->
+                <param name="rsi_ip_address">${rsi_config['server_ip']}</param>
+                <param name="rsi_port">${rsi_config['server_port']}</param>
+                <param name="controller_ip_address">${rsi_config['client_ip']}</param>
+                <param name="controller_port">${rsi_config['client_port']}</param>
+                <param name="rsi_initial_joint_correction">${rsi_config['rsi_initial_joint_correction']}</param>
+                <param name="rsi_timeout">${rsi_config['rsi_timeout']}</param>
+                <param name="model">${rsi_config['model']}</param>
+                <param name="payload">${rsi_config['payload']}</param>
+            </hardware>
+            <joint name="joint_1">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['joint_1']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="joint_2">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['joint_2']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="joint_3">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['joint_3']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="joint_4">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['joint_4']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="joint_5">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['joint_5']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="joint_6">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['joint_6']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="left_gripper_finger_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['left_gripper_finger_joint']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+            <joint name="right_gripper_finger_joint">
+                <command_interface name="position"/>
+                <state_interface name="position">
+                  <param name="initial_value">${initial_positions['right_gripper_finger_joint']}</param>
+                </state_interface>
+                <state_interface name="velocity"/>
+            </joint>
+
+        </ros2_control>
+    </xacro:macro>
+</robot>

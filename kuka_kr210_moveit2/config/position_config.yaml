@@ -1,10 +1,11 @@
-#Default position config for kuka kr210 ros2_control
-default_position:
+# KUKA KR210 ROS2 Control Configuration
+initial_positions:
   joint_1: 0.0
   joint_2: 0.0
   joint_3: 0.0
   joint_4: 0.0
   joint_5: 0.0
   joint_6: 0.0
-  left_gripper: 0.0
-  right_gripper: 0.0
+  left_gripper_finger_joint: 0.0
+  right_gripper_finger_joint: 0.0
+  

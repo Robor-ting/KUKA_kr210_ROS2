@@ -1,0 +1,22 @@
+# KUKA RSI Configuration for KR210
+rsi:
+  # RSI server IP (KUKA controller IP)
+  server_ip: "192.168.1.10"
+  server_port: 49152
+
+  # RSI client IP (ROS PC IP)
+  client_ip: "192.168.1.100"
+  client_port: 49153
+
+  # RSI communication settings
+  rsi_initial_joint_correction: true
+  rsi_timeout: 0.1
+
+  # Robot model specific settings
+  model: "KR210_R2700_2"
+  payload: 10.0  # kg
+
+  # Joint limits (should match joint_limits.yaml)
+  joint_limits:
+    max_velocity: [2.0384, 1.9451, 1.95476, 3.12413, 3.00196, 3.83972]
+    max_acceleration: [1.98271, 1.26288, 2.56508, 7.03857, 1.76397, 1.87268]
