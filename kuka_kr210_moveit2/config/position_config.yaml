@@ -1,5 +1,5 @@
-# KUKA KR210 ROS2 Control Configuration
-initial_positions:
+#Default position config for kuka kr210 ros2_control
+default_position:
   joint_1: 0.0
   joint_2: 0.0
   joint_3: 0.0
